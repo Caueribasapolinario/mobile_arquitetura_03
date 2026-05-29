@@ -4,14 +4,24 @@ class Product {
   final int id;
   final String title;
   final double price;
+  final String description;
+  final String image;
 
-  Product({required this.id, required this.title, required this.price});
+  Product({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.description,
+    required this.image,
+  });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       id: json['id'],
       title: json['title'],
       price: (json['price'] as num).toDouble(),
+      description: json['description'] ?? 'Sem descrição',
+      image: json['image'] ?? '',
     );
   }
 
@@ -20,11 +30,13 @@ class Product {
       'id': id,
       'title': title,
       'price': price,
+      'description': description,
+      'image': image,
     };
   }
 
   static String encodeList(List<Product> products) => json.encode(
-        products.map<Map<String, dynamic>>((product) => product.toJson()).toList(),
+        products.map<Map<String, dynamic>>((p) => p.toJson()).toList(),
       );
 
   static List<Product> decodeList(String productsStr) =>

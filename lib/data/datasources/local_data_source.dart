@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/product.dart';
 
 class LocalDataSource {
-  static const String cacheKey = 'CACHED_PRODUCTS';
+  static const String cacheKey = 'CACHED_PRODUCTS_V2';
 
   Future<void> cacheProducts(List<Product> products) async {
     final prefs = await SharedPreferences.getInstance();

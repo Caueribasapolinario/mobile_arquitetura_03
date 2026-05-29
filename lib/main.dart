@@ -3,10 +3,9 @@ import 'data/datasources/local_data_source.dart';
 import 'data/datasources/remote_data_source.dart';
 import 'data/repositories/product_repository.dart';
 import 'viewmodels/product_viewmodel.dart';
-import 'views/product_page.dart';
+import 'views/home_page.dart';
 
 void main() {
-  // Configuração da Injeção de Dependências
   final remoteDataSource = RemoteDataSource();
   final localDataSource = LocalDataSource();
   
@@ -33,7 +32,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProductPage(viewModel: viewModel),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(viewModel: viewModel), 
     );
   }
 }

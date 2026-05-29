@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../data/repositories/product_repository.dart';
 
-// Representa os estados possíveis da interface
 enum AppState { loading, success, error }
 
 class ProductViewModel extends ChangeNotifier {
@@ -16,7 +15,7 @@ class ProductViewModel extends ChangeNotifier {
 
   Future<void> loadProducts() async {
     state = AppState.loading;
-    notifyListeners(); // Avisa a UI que está carregando
+    notifyListeners();
 
     try {
       products = await repository.getProducts();
@@ -25,7 +24,7 @@ class ProductViewModel extends ChangeNotifier {
       errorMessage = e.toString().replaceAll('Exception: ', '');
       state = AppState.error;
     } finally {
-      notifyListeners(); // Avisa a UI para se reconstruir com sucesso ou erro
+      notifyListeners();
     }
   }
 }
